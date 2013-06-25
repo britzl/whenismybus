@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+	<string-array name="guice_modules">
+		<item>se.springworks.android.utils.inject.guice.LiveModule</item>
+	</string-array>
+</resources>
