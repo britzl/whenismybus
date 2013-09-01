@@ -5,7 +5,7 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 	
 	<uses-feature
         android:glEsVersion="0x00020000"
@@ -24,7 +24,7 @@
 	<uses-permission android:name="se.springworks.whenismybus.permission.MAPS_RECEIVE"/>
 
     <application
-        android:name="se.springworks.android.utils.application.BaseApplication"
+        android:name="se.springworks.whenismybus.application.Application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"

@@ -2,5 +2,6 @@
 <resources> 
 	<string-array name="guice_modules">
 		<item>se.springworks.android.utils.inject.guice.LiveModule</item>
+		<item>se.springworks.whenismybus.inject.LiveModule</item>
 	</string-array>
 </resources>
