@@ -1,5 +1,10 @@
 <resources>
 
     <string name="app_name">When is my bus?</string>
+    <string name="button_search">Search</string>
+    
+    <string name="hint_from">Från</string>
+    <string name="hint_to">Till</string>
+    
 
 </resources>

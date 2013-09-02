@@ -19,6 +19,14 @@ public class Directions {
 		return routes;
 	}
 	
+	public Route firstRoute() {
+		return routes.get(0);
+	}
+	
+	public boolean hasRoutes() {
+		return !routes.isEmpty();
+	}
+	
 	public String getStatus() {
 		return status;
 	}

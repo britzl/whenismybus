@@ -61,6 +61,14 @@ public class Route {
 		return legs;
 	}
 	
+	public Leg getFirstLeg() {
+		return legs.get(0);
+	}
+	
+	public boolean hasLegs() {
+		return !legs.isEmpty();
+	}
+	
 	/**
 	 * Get an object holding an array of encoded points that represent an
 	 * approximate (smoothed) path of the resulting directions
