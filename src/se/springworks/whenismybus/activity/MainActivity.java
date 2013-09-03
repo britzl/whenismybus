@@ -6,13 +6,13 @@ import se.springworks.android.utils.inject.GrapeGuice;
 import se.springworks.android.utils.inject.annotation.InjectLogger;
 import se.springworks.android.utils.inject.annotation.InjectView;
 import se.springworks.android.utils.logging.Logger;
+import se.springworks.android.utils.map.directions.Directions;
+import se.springworks.android.utils.map.directions.IDirectionsApi;
+import se.springworks.android.utils.map.directions.IDirectionsApi.OnDirectionsCallback;
+import se.springworks.android.utils.map.directions.Leg;
+import se.springworks.android.utils.map.directions.Route;
+import se.springworks.android.utils.map.directions.TravelMode;
 import se.springworks.whenismybus.R;
-import se.springworks.whenismybus.directions.Directions;
-import se.springworks.whenismybus.directions.IDirectionsApi;
-import se.springworks.whenismybus.directions.IDirectionsApi.OnDirectionsCallback;
-import se.springworks.whenismybus.directions.Leg;
-import se.springworks.whenismybus.directions.Route;
-import se.springworks.whenismybus.directions.TravelMode;
 import se.springworks.whenismybus.event.SearchEvent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
 	private Logger logger;
 	
 	@Inject
-	private IDirectionsApi directions;
+	private IDirectionsApi directionsApi;
 	
 	@Inject
 	private IEventBus bus;
@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
 	@Subscribe
 	public void onSearch(SearchEvent e) {
 		logger.debug("onSearch() from %s to %s", e.from, e.to);
-		directions.directions(e.from, e.to, TravelMode.TRANSIT, (int)(System.currentTimeMillis() / 1000), new OnDirectionsCallback() {
+		directionsApi.directions(e.from, e.to, TravelMode.TRANSIT, (int)(System.currentTimeMillis() / 1000), new OnDirectionsCallback() {
 			
 			@Override
 			public void onError(Throwable t, String error) {

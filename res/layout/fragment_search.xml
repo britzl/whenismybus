@@ -13,6 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
 	
+	<ListView
+	    android:id="@+id/from_results"
+	    android:visibility="gone"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
+	
 	<EditText 
         android:id="@+id/to"
         android:inputType="text"
@@ -21,6 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
 	
+	<ListView
+	    android:id="@+id/to_results"
+	    android:visibility="gone"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"/>
+		
 	<Button 
 	    android:id="@+id/searchbutton"
 	    android:text="@string/button_search"
