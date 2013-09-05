@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/searchbox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-	<EditText 
+
+    <TextView
         android:id="@+id/from"
-        android:inputType="text"
-        android:hint="@string/hint_from"
+        style="@style/locationtext"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
-	
-	<ListView
-	    android:id="@+id/from_results"
-	    android:visibility="gone"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
-	
-	<EditText 
-        android:id="@+id/to"
-        android:inputType="text"
-        android:hint="@string/hint_to"
+        android:paddingBottom="10dp" />
+
+    <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
-	
-	<ListView
-	    android:id="@+id/to_results"
-	    android:visibility="gone"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"/>
-		
-	<Button 
-	    android:id="@+id/searchbutton"
-	    android:text="@string/button_search"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="10dp"/>
+        android:layout_height="1dp"
+        android:src="@drawable/divider"
+        tools:ignore="ContentDescription" />
     
+    <TextView
+        android:id="@+id/to"
+        style="@style/locationtext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+
+    <Button
+        android:id="@+id/searchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:paddingTop="10dp"
+        android:text="@string/button_search" />
+
 </LinearLayout>

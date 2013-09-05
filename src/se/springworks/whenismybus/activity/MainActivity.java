@@ -14,6 +14,7 @@ import se.springworks.android.utils.map.directions.Route;
 import se.springworks.android.utils.map.directions.TravelMode;
 import se.springworks.whenismybus.R;
 import se.springworks.whenismybus.event.SearchEvent;
+import se.springworks.whenismybus.event.ShowRoutesEvent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -38,9 +39,6 @@ public class MainActivity extends BaseActivity {
 	protected void createActivity(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_main);
 		GrapeGuice.getInjector(this).injectMembers(this).injectViews(this);
-		
-//		setContentView(R.layout.fragment_map);
-//		GrapeGuice.getInjector(this).injectViews(this);
 	}
 
 	@Override
@@ -81,6 +79,8 @@ public class MainActivity extends BaseActivity {
 				}
 				Leg leg = route.getFirstLeg();
 				result.setText(leg.getDepartureTime().getText());
+				
+				bus.post(new ShowRoutesEvent(directions.getRoutes()));
 			}
 		});
 	}
