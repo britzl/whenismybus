@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
@@ -35,6 +36,9 @@ public class SearchBoxFragment extends BaseFragment {
 	@InjectView(id = R.id.to)
 	private TextView to;
 	
+	@InjectView(id = R.id.swapfromto)
+	private ImageView swapfromto;
+	
 	private TextView selected;
 	
 	@Inject
@@ -51,12 +55,14 @@ public class SearchBoxFragment extends BaseFragment {
 
 	@Override
 	protected void fragmentReadyToUse(Bundle savedInstanceState) {
+		final Bundle args = new Bundle();
 		from.setText("Lövsångarvägen");
 		from.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				selected = from;
-				FragmentUtil.showSingle(getActivity(), new SelectLocationFragment());
+				args.putString(SelectLocationFragment.ARG_LOCATION, from.getText().toString());
+				FragmentUtil.showSingle(getActivity(), new SelectLocationFragment(), args);
 			}
 		});
 		
@@ -65,7 +71,8 @@ public class SearchBoxFragment extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 				selected = to;
-				FragmentUtil.showSingle(getActivity(), new SelectLocationFragment());
+				args.putString(SelectLocationFragment.ARG_LOCATION, to.getText().toString());
+				FragmentUtil.showSingle(getActivity(), new SelectLocationFragment(), args);
 			}
 		});
 
@@ -73,7 +80,19 @@ public class SearchBoxFragment extends BaseFragment {
 			
 			@Override
 			public void onClick(View v) {
-				logger.debug("onClick()");
+				logger.debug("onClick() search");
+				bus.post(new SearchEvent(from.getText().toString(), to.getText().toString()));
+			}
+		});
+		
+		swapfromto.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				CharSequence f = from.getText();
+				CharSequence t = to.getText();
+				from.setText(t);
+				to.setText(f);
 				bus.post(new SearchEvent(from.getText().toString(), to.getText().toString()));
 			}
 		});

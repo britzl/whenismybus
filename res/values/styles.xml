@@ -13,16 +13,23 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
     <style name="locationtext" parent="@android:style/Widget.TextView">
         <item name="android:textSize">@dimen/fontsize_medium</item>
+        <item name="se.springworks.whenismybus:font">fonts/Roboto-Light.ttf</item>
     </style>
     
     <style name="listitem" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/fontsize_small</item>
+        <item name="se.springworks.whenismybus:font">fonts/Roboto-Light.ttf</item>
+        </style>
+   
+    <style name="button" parent="@android:style/Widget.Button">
         <item name="android:textSize">@dimen/fontsize_medium</item>
+        <item name="se.springworks.whenismybus:font">fonts/Roboto-Medium.ttf</item>
     </style>
     
 </resources>

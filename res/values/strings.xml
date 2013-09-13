@@ -6,5 +6,9 @@
     <string name="hint_from">Från</string>
     <string name="hint_to">Till</string>
     
+    <string name="title_selectlocation">Ange plats</string>
 
+    <string name="widget_1x1">1x1</string>
+    <string name="widget_2x1">2x1</string>
+    <string name="widget_4x1">4x1</string>
 </resources>

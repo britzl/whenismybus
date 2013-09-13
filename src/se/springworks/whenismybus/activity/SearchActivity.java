@@ -4,7 +4,6 @@ import se.springworks.android.utils.activity.BaseActivity;
 import se.springworks.android.utils.eventbus.IEventBus;
 import se.springworks.android.utils.inject.GrapeGuice;
 import se.springworks.android.utils.inject.annotation.InjectLogger;
-import se.springworks.android.utils.inject.annotation.InjectView;
 import se.springworks.android.utils.logging.Logger;
 import se.springworks.android.utils.map.directions.Directions;
 import se.springworks.android.utils.map.directions.IDirectionsApi;
@@ -16,12 +15,11 @@ import se.springworks.whenismybus.R;
 import se.springworks.whenismybus.event.SearchEvent;
 import se.springworks.whenismybus.event.ShowRoutesEvent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.squareup.otto.Subscribe;
 
-public class MainActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity {
 
 	@InjectLogger
 	private Logger logger;
@@ -31,9 +29,6 @@ public class MainActivity extends BaseActivity {
 	
 	@Inject
 	private IEventBus bus;
-	
-	@InjectView(id = R.id.result)
-	private TextView result;
 	
 	@Override
 	protected void createActivity(Bundle savedInstanceState) {
@@ -61,24 +56,24 @@ public class MainActivity extends BaseActivity {
 			@Override
 			public void onError(Throwable t, String error) {
 				logger.error(error, t);
-				result.setText(error);
+//				result.setText(error);
 			}
 			
 			@Override
 			public void onDirections(Directions directions) {
 				logger.debug("Directions received %s", directions.getStatus());
 				if(!directions.hasRoutes()) {
-					result.setText("No route!");
+//					result.setText("No route!");
 					return;
 				}
 				
 				Route route = directions.firstRoute();
 				if(!route.hasLegs()) {
-					result.setText("No route!");
+//					result.setText("No route!");
 					return;
 				}
 				Leg leg = route.getFirstLeg();
-				result.setText(leg.getDepartureTime().getText());
+//				result.setText(leg.getDepartureTime().getText());
 				
 				bus.post(new ShowRoutesEvent(directions.getRoutes()));
 			}

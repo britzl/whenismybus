@@ -1,7 +1,6 @@
 package se.springworks.whenismybus.adapter;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import se.springworks.android.utils.adapter.SimpleListAdapter;
@@ -41,7 +40,7 @@ public class RouteAdapter extends SimpleListAdapter<Route> {
 
 		final long timeInSeconds = data.getTotalTime() / 1000;
 		TextView travelTime = (TextView)view.findViewById(R.id.travel_time);
-		travelTime.setText(timeInSeconds / (60 * 60) + ":" + (timeInSeconds / 60));
+		travelTime.setText(String.format("%d:%02d", timeInSeconds / (60 * 60), (timeInSeconds % 60)));
 		
 	}
 
