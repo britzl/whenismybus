@@ -70,5 +70,24 @@
 		</receiver>
 				
 		<service android:name="se.springworks.whenismybus.WidgetService"></service>
+		
+		
+		
+		
+		<receiver
+            android:name="de.vogella.android.widget.example.MyWidgetProvider"
+            android:icon="@drawable/ic_launcher"
+            android:label="Example Widget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <service android:name="de.vogella.android.widget.example.UpdateWidgetService" >
+        </service>		
 	</application>
 </manifest>

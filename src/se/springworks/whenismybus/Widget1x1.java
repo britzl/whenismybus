@@ -1,32 +1,21 @@
 package se.springworks.whenismybus;
 
-import se.springworks.android.utils.logging.Logger;
-import se.springworks.android.utils.logging.LoggerFactory;
-import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 
-public class Widget1x1 extends AppWidgetProvider {
-
-	private Logger logger = LoggerFactory.getLogger(Widget1x1.class);
+public class Widget1x1 extends WidgetProvider {
 
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-			int[] appWidgetIds) {
-		logger.debug("onUpdate method called");
-		// Get all ids
-		ComponentName thisWidget = new ComponentName(context, Widget1x1.class);
-		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+	protected Class<? extends WidgetProvider> getWidgetClass() {
+		return Widget1x1.class;
+	}
 
-		// Build the intent to call the service
-		Intent intent = new Intent(context.getApplicationContext(), WidgetService.class);
-		intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
-		intent.putExtra(WidgetService.EXTRA_WIDGETSIZE, 1);
+	@Override
+	protected int getWidgetSize() {
+		return 1;
+	}
 
-		// Update the widgets via the service
-		context.startService(intent);
+	@Override
+	protected int getWidgetLayoutId() {
+		return R.layout.widget_layout_1x1;
 	}
 
 }
